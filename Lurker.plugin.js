@@ -92,8 +92,6 @@ module.exports = (_ => {
 									UpdateMuteGuildNotificationModule.updateGuildNotificationSettings(guild.id, {muted: true});
 									this.props.disabled.push(guild.id);
 								}
-								if (typeof this.props.onClick == "function") 
-									this.props.onClick(this.props.disabled, this);
 								BDFDB.ReactUtils.forceUpdate(this);
 							}
 						})
