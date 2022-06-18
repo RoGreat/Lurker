@@ -1,12 +1,11 @@
 /**
  * @name Lurker
- * @description Automatically mute servers and disable direct messages from server members. Whitelist available for servers you keep up with.
+ * @description Mute servers and view which servers allow direct messages from the plugin's settings
  * @author RoGreat
  * @authorLink https://github.com/RoGreat
  * @version 1.0.0
- * updateUrl 
- * website 
- * source
+ * updateUrl https://raw.githubusercontent.com/RoGreat/Lurker/main/Lurker.plugin.js 
+ * source https://github.com/RoGreat/Lurker
  * donate https://www.paypal.me/RoGreat
  */
 
@@ -17,11 +16,9 @@ module.exports = (_ => {
 			"name": "Lurker",
 			"author": "RoGreat",
 			"version": "1.0.0",
-			"description": "Mute servers ",
-			// "github": "",
-			// "github_raw": ""
+			"description": "Mute servers and view which servers allow direct messages from the plugin's settings"
 		}
-	};	
+	};
 
 	return !window.BDFDB_Global || (!window.BDFDB_Global.loaded && !window.BDFDB_Global.started) ? class {
 		getName () {return config.info.name;}
@@ -140,8 +137,7 @@ module.exports = (_ => {
 			onStop() {}
 
 			getSettingsPanel(collapseStates = {}) {
-				let settingsPanel;
-				return settingsPanel = BDFDB.PluginUtils.createSettingsPanel(this, {
+				return BDFDB.PluginUtils.createSettingsPanel(this, {
 					collapseStates: collapseStates,
 					children: _ => {
 						let settingsItems = [];
@@ -167,7 +163,6 @@ module.exports = (_ => {
 							size: BDFDB.LibraryComponents.TextElement.Sizes.SIZE_12,
 							children: BDFDB.LanguageUtils.LanguageStrings.USER_SETTINGS + " > " + BDFDB.LanguageUtils.LanguageStrings.PRIVACY_AND_SAFETY + " > " + BDFDB.LanguageUtils.LanguageStrings.NEW_GUILDS_DM_ALLOWED
 						}));
-						return settingsItems;
 					}
 				});
 			}
