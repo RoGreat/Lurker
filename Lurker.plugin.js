@@ -4,9 +4,9 @@
  * @author RoGreat
  * @authorLink https://github.com/RoGreat
  * @version 1.0.0
- * updateUrl https://raw.githubusercontent.com/RoGreat/Lurker/main/Lurker.plugin.js 
- * source https://github.com/RoGreat/Lurker
- * donate https://www.paypal.me/RoGreat
+ * @updateUrl https://raw.githubusercontent.com/RoGreat/Lurker/main/Lurker.plugin.js 
+ * @source https://github.com/RoGreat/Lurker
+ * @donate https://www.paypal.me/RoGreat
  */
 
 
@@ -91,8 +91,9 @@ module.exports = (_ => {
 								else {
 									UpdateMuteGuildNotificationModule.updateGuildNotificationSettings(guild.id, {muted: true});
 									this.props.disabled.push(guild.id);
-									BDFDB.ArrayUtils.removeCopies(this.props.disabled);
 								}
+								if (typeof this.props.onClick == "function") 
+									this.props.onClick(this.props.disabled, this);
 								BDFDB.ReactUtils.forceUpdate(this);
 							}
 						})
@@ -163,6 +164,7 @@ module.exports = (_ => {
 							size: BDFDB.LibraryComponents.TextElement.Sizes.SIZE_12,
 							children: BDFDB.LanguageUtils.LanguageStrings.USER_SETTINGS + " > " + BDFDB.LanguageUtils.LanguageStrings.PRIVACY_AND_SAFETY + " > " + BDFDB.LanguageUtils.LanguageStrings.NEW_GUILDS_DM_ALLOWED
 						}));
+						return settingsItems;
 					}
 				});
 			}
